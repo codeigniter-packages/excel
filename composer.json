@@ -1,0 +1,20 @@
+{
+    "name": "codeigniter-packages/excel",
+    "type": "codeigniter-library",
+    "description": "read/export excel",
+    "authors": [
+        {
+            "name": "jooonwood",
+            "email": "jooonwood@gmail.com"
+        }
+    ],
+    "require": {
+        "codeigniter-packages/installer": "dev-master",
+        "codeigniter-packages/loader": "dev-master",
+        "phpoffice/phpexcel":"1.8.0"
+    },
+    "extra":{
+        "class_name":"excel",
+        "main":"Excel.php"
+    }
+}
