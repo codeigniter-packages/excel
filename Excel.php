@@ -17,19 +17,10 @@ class Excel extends PHPExcel {
     function query_to_excel($header, $query_result, $filename) {
 
         $objPHPExcel = new PHPEXCEL();
-        foreach ($header as $key => $value) {
-            $objPHPExcel->getActiveSheet()->setCellValueExplicitByColumnAndRow($key, 1, $value);
-        }
-        foreach ($query_result as $row => $item) {
-            $i = 0;
-            $row = $row + 2;
-            foreach ($item as $key => $field) {
-                $objPHPExcel->getActiveSheet()->setCellValueExplicitByColumnAndRow($i, $row, $field);
-                $i++;
-            }
-            unset($query_result[$row - 2]);
-        }
-
+        $sheet=$objPHPExcel->getActiveSheet();
+        
+        $sheet->fromArray($header, NULL, 'A1');
+        $sheet->fromArray($query_result, NULL, 'A2');
 
         $objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
         header("Pragma: public");
